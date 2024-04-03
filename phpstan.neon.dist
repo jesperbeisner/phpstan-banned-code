@@ -1,10 +1,8 @@
 parameters:
-	level: 8
+	level: max
 	paths:
 		- src
 		- tests
-
-	checkGenericClassInNonGenericObjectType: false
 
 includes:
 	- extension.neon

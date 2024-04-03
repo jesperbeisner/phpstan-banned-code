@@ -6,10 +6,6 @@ default: help
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?##.*$$' $(MAKEFILE_LIST) | sort | awk '{split($$0, a, ":"); printf "\033[36m%-30s\033[0m %-30s %s\n", a[1], a[2], a[3]}'
 
-app-composer-validate: ## to validate composer config
-	composer validate
-	composer normalize --dry-run
-
 app-cs-check: ## to show files that need to be fixed
 	vendor/bin/php-cs-fixer fix --dry-run --diff --verbose
 
@@ -41,8 +37,5 @@ app-test-functional: ## test some code snippets are detected as banned code
 		fi \
 	done \
 
-app-test-with-code-coverage: ## to run unit tests with code-coverage
-	vendor/bin/phpunit --coverage-text --colors=never
-
 ci: ## to run checks during ci
-	make app-composer-validate app-test-with-code-coverage app-test-functional app-static-analysis app-cs-check app-security-check
+	make app-test app-test-functional app-static-analysis app-cs-check app-security-check

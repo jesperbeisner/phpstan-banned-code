@@ -1,5 +1,5 @@
 {
-    "name": "ekino/phpstan-banned-code",
+    "name": "jesperbeisner/phpstan-banned-code",
     "description": "Detected banned code using PHPStan",
     "license": "MIT",
     "type": "phpstan-extension",
@@ -13,36 +13,34 @@
             "name": "Rémi Marseille",
             "email": "remi.marseille@ekino.com",
             "homepage": "https://www.ekino.com"
+        },
+        {
+            "name": "Jesper Beisner",
+            "email": "jesper.beisner+github@gmail.com"
         }
     ],
-    "homepage": "https://github.com/ekino/phpstan-banned-code",
+    "homepage": "https://github.com/jesperbeisner/phpstan-banned-code",
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^8.1",
         "phpstan/phpstan": "^1.0"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.6",
         "friendsofphp/php-cs-fixer": "^3.0",
         "nikic/php-parser": "^4.3",
         "phpstan/phpstan-phpunit": "^1.0",
-        "phpunit/phpunit": "^9.5",
-        "symfony/var-dumper": "^5.0"
+        "phpunit/phpunit": "^10.0",
+        "symfony/var-dumper": "^7.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Ekino\\PHPStanBannedCode\\": "src"
+            "Jesperbeisner\\PHPStanBannedCode\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\Ekino\\PHPStanBannedCode\\": "tests"
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "ergebnis/composer-normalize": true
+            "Tests\\Jesperbeisner\\PHPStanBannedCode\\": "tests"
         }
     },
     "extra": {
