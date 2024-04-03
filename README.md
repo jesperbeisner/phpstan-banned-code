@@ -13,7 +13,7 @@ For instance, you can add it in your CI process to make sure there is no debug/n
 To use this extension, require it using [Composer](https://getcomposer.org/):
 
 ```bash
-composer require --dev ekino/phpstan-banned-code
+composer require --dev jesperbeisner/phpstan-banned-code
 ```
 
 When you use https://github.com/phpstan/extension-installer you are done.
@@ -22,7 +22,7 @@ If not, include `extension.neon` in your project's PHPStan config:
 
 ```
 includes:
-	- vendor/ekino/phpstan-banned-code/extension.neon
+	- vendor/jesperbeisner/phpstan-banned-code/extension.neon
 ```
 
 ## Advanced usage
@@ -33,49 +33,56 @@ You can configure this library with parameters:
 parameters:
 	banned_code:
 		nodes:
-			# enable detection of echo
 			-
 				type: Stmt_Echo
-				functions: null
-
-			# enable detection of eval
+				active: true
 			-
 				type: Expr_Eval
-				functions: null
-
-			# enable detection of die/exit
+				active: true
 			-
 				type: Expr_Exit
-				functions: null
-
-			# enable detection of a set of functions
-			-
-				type: Expr_FuncCall
-				functions:
-					- dd
-					- debug_backtrace
-					- dump
-					- exec
-					- passthru
-					- phpinfo
-					- print_r
-					- proc_open
-					- shell_exec
-					- system
-					- var_dump
-
-			# enable detection of print statements
+				active: true
 			-
 				type: Expr_Print
-				functions: null
-
-			# enable detection of shell execution by backticks
+				active: true
 			-
 				type: Expr_ShellExec
-				functions: null
+				active: true
 
-		# enable detection of `use Tests\Foo\Bar` in a non-test file
-		use_from_tests: true
+		functions:
+		    -
+		        name: dd
+		        active: true
+		    -
+		        name: debug_backtrace
+		        active: true
+		    -
+		        name: dump
+		        active: true
+		    -
+		        name: exec
+		        active: true
+		    -
+		        name: passthru
+		        active: true
+		    -
+		        name: phpinfo
+		        active: true
+		    -
+		        name: print_r
+		        active: true
+		    -
+		        name: proc_open
+		        active: true
+		    -
+		        name: shell_exec
+		        active: true
+		    -
+		        name: system
+		        active: true
+		    -
+		        name: var_dump
+		        active: true
 ```
 
 `type` is the returned value of a node, see the method `getType()`.
